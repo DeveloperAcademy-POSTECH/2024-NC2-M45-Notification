@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		891B7DF82C206C53002F0CA2 /* AddNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B7DF72C206C53002F0CA2 /* AddNotificationView.swift */; };
+		89AB79C52C20154D00EB21A0 /* NoNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB79C42C20154D00EB21A0 /* NoNotificationView.swift */; };
 		FF66107B2C1FC8C100DDE7E2 /* NorouApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66107A2C1FC8C100DDE7E2 /* NorouApp.swift */; };
 		FF66107D2C1FC8C100DDE7E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66107C2C1FC8C100DDE7E2 /* ContentView.swift */; };
 		FF66107F2C1FC8C200DDE7E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF66107E2C1FC8C200DDE7E2 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		891B7DF72C206C53002F0CA2 /* AddNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationView.swift; sourceTree = "<group>"; };
+		89AB79C42C20154D00EB21A0 /* NoNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNotificationView.swift; sourceTree = "<group>"; };
 		FF6610772C1FC8C100DDE7E2 /* Norou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Norou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF66107A2C1FC8C100DDE7E2 /* NorouApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorouApp.swift; sourceTree = "<group>"; };
 		FF66107C2C1FC8C100DDE7E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +36,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89AB79C32C20153300EB21A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89AB79C42C20154D00EB21A0 /* NoNotificationView.swift */,
+				891B7DF72C206C53002F0CA2 /* AddNotificationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FF66106E2C1FC8C100DDE7E2 = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				FF66107A2C1FC8C100DDE7E2 /* NorouApp.swift */,
+				89AB79C32C20153300EB21A0 /* Views */,
 				FF66107C2C1FC8C100DDE7E2 /* ContentView.swift */,
 				FF66107E2C1FC8C200DDE7E2 /* Assets.xcassets */,
 				FF6610802C1FC8C200DDE7E2 /* Preview Content */,
@@ -139,6 +153,8 @@
 			files = (
 				FF66107D2C1FC8C100DDE7E2 /* ContentView.swift in Sources */,
 				FF66107B2C1FC8C100DDE7E2 /* NorouApp.swift in Sources */,
+				89AB79C52C20154D00EB21A0 /* NoNotificationView.swift in Sources */,
+				891B7DF82C206C53002F0CA2 /* AddNotificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +296,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +326,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
