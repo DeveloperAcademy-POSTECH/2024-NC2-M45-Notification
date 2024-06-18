@@ -9,22 +9,20 @@ import SwiftUI
 
 struct NoNotificationView: View {
     
-    @State var tag: Int? = nil
-    
     var body: some View {
         NavigationView{
             ZStack{
-                
                 VStack{
                     HStack{
                         Spacer()
+                        
                         NavigationLink(destination: AddNotificationView()){
                             Image(systemName: "plus")
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .padding()
+                            
                         }
-                        
                     }
                     Spacer()
                 }
@@ -34,6 +32,7 @@ struct NoNotificationView: View {
                         .resizable()
                         .frame(width: 85, height: 85)
                         .imageScale(.large)
+                    
                     Text("No pending Notifications")
                         .font(.title2)
                         .bold()
@@ -47,7 +46,6 @@ struct NoNotificationView: View {
                 }
                 .padding()
             }
-            
         }
     }
 }
