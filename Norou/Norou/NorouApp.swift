@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct NorouApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NotificationListView()
+                .modelContainer(for: [Routine.self])
         }
     }
 }
+
