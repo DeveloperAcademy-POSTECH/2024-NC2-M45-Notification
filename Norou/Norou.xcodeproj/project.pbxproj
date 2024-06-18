@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		891B7DF82C206C53002F0CA2 /* AddNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B7DF72C206C53002F0CA2 /* AddNotificationView.swift */; };
 		89AB79C52C20154D00EB21A0 /* NoNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB79C42C20154D00EB21A0 /* NoNotificationView.swift */; };
+		FF02F16E2C21F86300FCFAC0 /* SwiftDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF02F16D2C21F86300FCFAC0 /* SwiftDataModel.swift */; };
 		FF66107B2C1FC8C100DDE7E2 /* NorouApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66107A2C1FC8C100DDE7E2 /* NorouApp.swift */; };
-		FF66107D2C1FC8C100DDE7E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66107C2C1FC8C100DDE7E2 /* ContentView.swift */; };
+		FF66107D2C1FC8C100DDE7E2 /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66107C2C1FC8C100DDE7E2 /* NotificationListView.swift */; };
 		FF66107F2C1FC8C200DDE7E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF66107E2C1FC8C200DDE7E2 /* Assets.xcassets */; };
 		FF6610822C1FC8C200DDE7E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF6610812C1FC8C200DDE7E2 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -18,9 +19,10 @@
 /* Begin PBXFileReference section */
 		891B7DF72C206C53002F0CA2 /* AddNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationView.swift; sourceTree = "<group>"; };
 		89AB79C42C20154D00EB21A0 /* NoNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNotificationView.swift; sourceTree = "<group>"; };
+		FF02F16D2C21F86300FCFAC0 /* SwiftDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataModel.swift; sourceTree = "<group>"; };
 		FF6610772C1FC8C100DDE7E2 /* Norou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Norou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF66107A2C1FC8C100DDE7E2 /* NorouApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorouApp.swift; sourceTree = "<group>"; };
-		FF66107C2C1FC8C100DDE7E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FF66107C2C1FC8C100DDE7E2 /* NotificationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListView.swift; sourceTree = "<group>"; };
 		FF66107E2C1FC8C200DDE7E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF6610812C1FC8C200DDE7E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -40,9 +42,18 @@
 			isa = PBXGroup;
 			children = (
 				89AB79C42C20154D00EB21A0 /* NoNotificationView.swift */,
+				FF66107C2C1FC8C100DDE7E2 /* NotificationListView.swift */,
 				891B7DF72C206C53002F0CA2 /* AddNotificationView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FF02F16C2C21F84B00FCFAC0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FF02F16D2C21F86300FCFAC0 /* SwiftDataModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FF66106E2C1FC8C100DDE7E2 = {
@@ -65,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				FF66107A2C1FC8C100DDE7E2 /* NorouApp.swift */,
+				FF02F16C2C21F84B00FCFAC0 /* Models */,
 				89AB79C32C20153300EB21A0 /* Views */,
-				FF66107C2C1FC8C100DDE7E2 /* ContentView.swift */,
 				FF66107E2C1FC8C200DDE7E2 /* Assets.xcassets */,
 				FF6610802C1FC8C200DDE7E2 /* Preview Content */,
 			);
@@ -151,7 +162,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF66107D2C1FC8C100DDE7E2 /* ContentView.swift in Sources */,
+				FF66107D2C1FC8C100DDE7E2 /* NotificationListView.swift in Sources */,
+				FF02F16E2C21F86300FCFAC0 /* SwiftDataModel.swift in Sources */,
 				FF66107B2C1FC8C100DDE7E2 /* NorouApp.swift in Sources */,
 				89AB79C52C20154D00EB21A0 /* NoNotificationView.swift in Sources */,
 				891B7DF82C206C53002F0CA2 /* AddNotificationView.swift in Sources */,
@@ -285,6 +297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Norou/Preview Content\"";
@@ -316,6 +329,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Norou/Preview Content\"";
