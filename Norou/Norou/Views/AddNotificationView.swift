@@ -15,6 +15,10 @@ struct AddNotificationView: View {
     @State private var isLocationNoti = false
     @State private var date = Date()
     
+    // 몇 회 반복할 지 정할 때 Menu Picker 만들기 위함.
+    @State private var selectedRepeat = "Never"
+    let repeatCycles = ["반복 안함", "매일", "매주", "2주에 한 번", "매달", "매년"]
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -46,17 +50,23 @@ struct AddNotificationView: View {
                     }
                     
                     Section("날짜 지정 알림") {
-                        HStack{
+                        HStack {
                             DatePicker("", selection: $date)
                             
                             Toggle(isOn: $isCalendarNoti) {
                             }
                         }
-                        Text("반복")
-                        
+
+                        Picker("반복", selection: $selectedRepeat) {
+                            ForEach(repeatCycles, id: \.self) { repeatCycle in
+                                Text("\(repeatCycle)")
+                                
+                            }
+                        }
+                        .pickerStyle(.menu)
                     }
                     
-                    Section("Current Location") {
+                    Section("현재 위치") {
                         Toggle(isOn: $isLocationNoti) {
                             Text("장소 도착시 알람")
                         }
