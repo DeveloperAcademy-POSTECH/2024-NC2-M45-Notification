@@ -10,6 +10,7 @@ import SwiftData
 
 struct NotificationListView: View {
     @Query(sort: \Routine.createDate, order: .forward) private var routines: [Routine]
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     var body: some View {
         if routines.isEmpty {
@@ -23,6 +24,7 @@ struct NotificationListView: View {
                                 VStack(alignment: .leading) {
                                     Text(routine.title ?? "No Title")
                                         .font(.headline)
+                                        .foregroundColor(colorScheme == .light ? .black : .white)
                                         .lineLimit(1)
                                         .truncationMode(.tail)
                                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -34,13 +36,14 @@ struct NotificationListView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                                 .padding()
-                                .background(Color(UIColor.secondarySystemBackground))
+                                .background(Color(UIColor.systemBackground))
                                 .cornerRadius(8)
                             }
                         }
                     }
                 }
                 .padding(20)
+                .background(Color(UIColor.secondarySystemBackground))
                 .navigationTitle("Routines")
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(
@@ -60,6 +63,7 @@ struct NotificationListView: View {
 #Preview {
     NotificationListView()
 }
+
 
 
 
