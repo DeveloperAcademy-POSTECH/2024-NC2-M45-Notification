@@ -41,6 +41,7 @@ struct NoNotificationView: View {
         }
         
     }
+    
 }
 
 #Preview {
