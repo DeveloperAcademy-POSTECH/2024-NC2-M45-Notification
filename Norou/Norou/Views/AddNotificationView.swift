@@ -22,8 +22,9 @@ struct AddNotificationView: View {
     @State private var isLocationNoti = false
     @State private var date = Date()
     @State private var selectedRepeat = "반복 안함"
+    
     let repeatCycles = ["반복 안함", "매일", "매주", "2주에 한 번", "매달", "매년"]
-
+    
     var routine: Routine?
     
     init(routine: Routine? = nil) {
@@ -37,12 +38,14 @@ struct AddNotificationView: View {
             _selectedRepeat = State(initialValue: routine.repeatCycles ?? "반복 안함")
         }
     }
+    
     var body: some View {
         VStack {
             Form {
                 Section("알림 이름") {
                     TextField("알림 이름을 입력해주세요.", text: $title)
                 }
+                
                 Section("알림 설명") {
                     ZStack {
                         TextEditor(text: $description)
@@ -61,6 +64,7 @@ struct AddNotificationView: View {
                         }
                     }
                 }
+                
                 Section("날짜 지정 알림") {
                     HStack {
                         DatePicker("", selection: $date)
@@ -68,7 +72,7 @@ struct AddNotificationView: View {
                         Toggle(isOn: $isCalendarNoti) {
                         }
                     }
-
+                    
                     Picker("반복", selection: $selectedRepeat) {
                         ForEach(repeatCycles, id: \.self) { repeatCycle in
                             Text("\(repeatCycle)")
@@ -76,6 +80,7 @@ struct AddNotificationView: View {
                     }
                     .pickerStyle(.menu)
                 }
+                
                 Section("현재 위치") {
                     Toggle(isOn: $isLocationNoti) {
                         Text("장소 도착시 알람")
@@ -95,8 +100,10 @@ struct AddNotificationView: View {
                         }
                     }
                     
+                    Text("\(routine?.latitude)")
+                    Text("\(routine?.longitude)")
+                    
                     if isLocationNoti == true {
-                        
                         if let placemark = locationManager.placemark {
                             Text("\(placemark.administrativeArea ?? "알 수 없음") \(placemark.locality ?? "알 수 없음") \(placemark.thoroughfare ?? "알 수 없음") \(placemark.subThoroughfare ?? "알 수 없음") \(placemark.name ?? "알 수 없음")")
                         } else {
@@ -109,7 +116,6 @@ struct AddNotificationView: View {
                 }
             }
         }
-        
         .navigationBarTitle("Make Your Norou!")
         .navigationBarItems(trailing:
                                 Button("Save") {
@@ -120,6 +126,7 @@ struct AddNotificationView: View {
             requestNotificationPermission()
         }
     }
+    
     private func requestNotificationPermission() {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -132,6 +139,7 @@ struct AddNotificationView: View {
             }
         }
     }
+    
     private func saveNotification() {
         if let routine = routine {
             routine.title = title
@@ -162,6 +170,7 @@ struct AddNotificationView: View {
         presentationMode.wrappedValue.dismiss()
         print("저장 성공")
     }
+    
     private func scheduleNotification() {
         let content = UNMutableNotificationContent()
         content.title = title
@@ -195,6 +204,16 @@ struct AddNotificationView: View {
             }
         }
         
+        if isLocationNoti, let latitude = locationManager.location?.coordinate.latitude, let longitude = locationManager.location?.coordinate.longitude {
+                let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let region = CLCircularRegion(center: center, radius: 100, identifier: UUID().uuidString)
+                region.notifyOnEntry = true
+                region.notifyOnExit = false
+                
+                trigger = UNLocationNotificationTrigger(region: region, repeats: false)
+            }
+        
+        
         if let trigger = trigger {
             let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
             UNUserNotificationCenter.current().add(request) { error in
@@ -215,4 +234,3 @@ struct AddNotificationView: View {
 #Preview {
     AddNotificationView()
 }
-
