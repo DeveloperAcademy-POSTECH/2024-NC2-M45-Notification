@@ -22,10 +22,99 @@ UNLocationNotificationTrigger를 이용하면 특정 장소에 도착하거나, 
 ## 💼 Use Case
 애플 디벨로퍼 아카데미 러너의 루틴을 Notification을 통해 관리할 수 있게 하자
 <br/>
-
-## 🖼️ Prototype
-(프로토타입과 설명 추가)
 <br/>
 
-## 🛠️ About Code
-(핵심 코드에 대한 설명 추가)
+## 🖼️ Prototype
+<img width="450" alt="스크린샷 2024-06-21 00 46 01" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M45-Notification/assets/116636498/99cd0349-6cdf-4f35-a98e-e2f103509cc3">
+<br/>
+<br/>
+<img width="468" alt="스크린샷 2024-06-21 00 46 38" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M45-Notification/assets/116636498/caa9ee65-4d4b-4611-bece-700ae85a98e4">
+<br/>
+<br/>
+
+## 🛠️ About Code <br/>
+- Notification 권환 요청
+
+```swift
+private func requestNotificationPermission() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print("권한 요청 에러: \(error)")
+            } else if granted {
+                print("권한 요청 승인")
+            } else {
+                print("권한 요청 거부")
+            }
+        }
+    }
+```
+<br/>
+
+- Notification의 content와 trigger 설정
+
+```swift
+private func scheduleNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = description
+        content.sound = UNNotificationSound.default
+        
+        var trigger: UNNotificationTrigger?
+        
+        if isCalendarNoti {
+            var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+            
+            switch selectedRepeat {
+            case "매일":
+                dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+                trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            case "매주":
+                dateComponents = Calendar.current.dateComponents([.weekday, .hour, .minute], from: date)
+                trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            case "2주에 한 번":
+                dateComponents = Calendar.current.dateComponents([.weekday, .hour, .minute], from: date)
+                trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2 * 7 * 24 * 60 * 60, repeats: true)
+                trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            case "매달":
+                dateComponents = Calendar.current.dateComponents([.day, .hour, .minute], from: date)
+                trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            case "매년":
+                dateComponents = Calendar.current.dateComponents([.month, .day, .hour, .minute], from: date)
+                trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            default:
+                trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            }
+        }
+        
+        if isLocationNoti {
+            if let latitude = locationManager.location?.coordinate.latitude, let longitude = locationManager.location?.coordinate.longitude {
+                let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let region = CLCircularRegion(center: center, radius: 100, identifier: UUID().uuidString)
+                region.notifyOnEntry = true
+                region.notifyOnExit = false
+                
+                trigger = UNLocationNotificationTrigger(region: region, repeats: false)
+            } else {
+                print("위치 정보를 가져오지 못함")
+            }
+        }
+```
+<br/>
+
+- Notification 생성
+
+```swift
+if let trigger = trigger {
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("알림 설정 에러: \(error)")
+                } else {
+                    print("알림 설정 성공")
+                }
+            }
+        } else {
+            print("알림 설정 실패")
+        }
+```
