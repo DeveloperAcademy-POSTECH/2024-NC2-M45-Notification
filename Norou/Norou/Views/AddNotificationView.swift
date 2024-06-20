@@ -5,12 +5,15 @@
 //  Created by Cho YeonJi on 6/17/24.
 //
 
+import CoreLocation
+import CoreLocationUI
 import SwiftUI
 import SwiftData
 
 struct AddNotificationView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) private var presentationMode
+    @StateObject var locationManager = LocationManager()
     
     @State private var title: String = ""
     @State private var description: String = ""
@@ -71,7 +74,7 @@ struct AddNotificationView: View {
                         Toggle(isOn: $isCalendarNoti) {
                         }
                     }
-
+                    
                     Picker("반복", selection: $selectedRepeat) {
                         ForEach(repeatCycles, id: \.self) { repeatCycle in
                             Text("\(repeatCycle)")
@@ -84,16 +87,41 @@ struct AddNotificationView: View {
                     Toggle(isOn: $isLocationNoti) {
                         Text("장소 도착시 알람")
                     }
-                    Text("현재 위치 좌표")
+                    .onChange(of: isLocationNoti) { newValue in
+                        if newValue == true {
+                            if locationManager.authorizationStatus == .authorizedWhenInUse ||
+                                locationManager.authorizationStatus == .authorizedAlways {
+                                locationManager.requestLocation()
+                            } else if locationManager.authorizationStatus == .notDetermined {
+                                locationManager.checkAuthorizationStatus()
+                            } else {
+                                print("위치 권한이 필요합니다.")
+                            }
+                        } else {
+                            resetLocationData()
+                        }
+                    }
+                    
+                    if isLocationNoti == true {
+                        
+                        if let placemark = locationManager.placemark {
+                            Text("\(placemark.administrativeArea ?? "알 수 없음") \(placemark.locality ?? "알 수 없음") \(placemark.thoroughfare ?? "알 수 없음") \(placemark.subThoroughfare ?? "알 수 없음") \(placemark.name ?? "알 수 없음")")
+                        } else {
+                            Text("위치 정보를 가져오는 중...")
+                        }
+                    } else {
+                        Text("토글을 눌러 현재 위치에 있을 때 알림설정")
+                            .foregroundStyle(.gray)
+                    }
                 }
-                
             }
         }
+        
         .navigationBarTitle("Make Your Norou!")
         .navigationBarItems(trailing:
-            Button("Save") {
-                saveNotification()
-            }
+                                Button("Save") {
+            saveNotification()
+        }
         )
     }
     
@@ -105,6 +133,11 @@ struct AddNotificationView: View {
             routine.isCalendarNoti = isCalendarNoti
             routine.repeatCycles = selectedRepeat
             routine.isLocationNoti = isLocationNoti
+            
+            if let location = locationManager.location {
+                routine.latitude = location.coordinate.latitude
+                routine.longitude = location.coordinate.longitude
+            }
         } else {
             let newRoutine = Routine(
                 title: title,
@@ -112,7 +145,9 @@ struct AddNotificationView: View {
                 date: isCalendarNoti ? date : date,
                 isCalendarNoti: isCalendarNoti,
                 repeatCycles: selectedRepeat,
-                isLocationNoti: isLocationNoti
+                isLocationNoti: isLocationNoti,
+                latitude: locationManager.location?.coordinate.latitude,
+                longitude: locationManager.location?.coordinate.longitude
             )
             modelContext.insert(newRoutine)
         }
@@ -120,11 +155,10 @@ struct AddNotificationView: View {
         presentationMode.wrappedValue.dismiss()
         print("Saved Your Norou!")
     }
+    private func resetLocationData() {
+        // 위치 알림이 꺼졌을 때 위치 관련 데이터를 초기화하는 함수
+    }
 }
-
 #Preview {
     AddNotificationView()
 }
-
-
-

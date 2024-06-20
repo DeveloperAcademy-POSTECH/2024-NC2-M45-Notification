@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		891B7DF82C206C53002F0CA2 /* AddNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B7DF72C206C53002F0CA2 /* AddNotificationView.swift */; };
 		89AB79C52C20154D00EB21A0 /* NoNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AB79C42C20154D00EB21A0 /* NoNotificationView.swift */; };
+		89D669BC2C2276AD00815D58 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D669BB2C2276AD00815D58 /* LocationManager.swift */; };
 		FF02F16E2C21F86300FCFAC0 /* SwiftDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF02F16D2C21F86300FCFAC0 /* SwiftDataModel.swift */; };
 		FF66107B2C1FC8C100DDE7E2 /* NorouApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66107A2C1FC8C100DDE7E2 /* NorouApp.swift */; };
 		FF66107D2C1FC8C100DDE7E2 /* NotificationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66107C2C1FC8C100DDE7E2 /* NotificationListView.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		891B7DF72C206C53002F0CA2 /* AddNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotificationView.swift; sourceTree = "<group>"; };
 		89AB79C42C20154D00EB21A0 /* NoNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNotificationView.swift; sourceTree = "<group>"; };
+		89D669BB2C2276AD00815D58 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FF02F16D2C21F86300FCFAC0 /* SwiftDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataModel.swift; sourceTree = "<group>"; };
 		FF6610772C1FC8C100DDE7E2 /* Norou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Norou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF66107A2C1FC8C100DDE7E2 /* NorouApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorouApp.swift; sourceTree = "<group>"; };
@@ -48,6 +50,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		89D669BA2C22769800815D58 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				89D669BB2C2276AD00815D58 /* LocationManager.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
 		FF02F16C2C21F84B00FCFAC0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +85,7 @@
 		FF6610792C1FC8C100DDE7E2 /* Norou */ = {
 			isa = PBXGroup;
 			children = (
+				89D669BA2C22769800815D58 /* helpers */,
 				FF66107A2C1FC8C100DDE7E2 /* NorouApp.swift */,
 				FF02F16C2C21F84B00FCFAC0 /* Models */,
 				89AB79C32C20153300EB21A0 /* Views */,
@@ -164,6 +175,7 @@
 			files = (
 				FF66107D2C1FC8C100DDE7E2 /* NotificationListView.swift in Sources */,
 				FF02F16E2C21F86300FCFAC0 /* SwiftDataModel.swift in Sources */,
+				89D669BC2C2276AD00815D58 /* LocationManager.swift in Sources */,
 				FF66107B2C1FC8C100DDE7E2 /* NorouApp.swift in Sources */,
 				89AB79C52C20154D00EB21A0 /* NoNotificationView.swift in Sources */,
 				891B7DF82C206C53002F0CA2 /* AddNotificationView.swift in Sources */,
@@ -298,12 +310,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Norou/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 43LM67V46K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 해줘 응애";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -330,12 +343,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Norou/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 43LM67V46K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 해줘 응애";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

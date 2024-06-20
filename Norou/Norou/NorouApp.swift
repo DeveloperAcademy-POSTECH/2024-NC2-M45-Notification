@@ -14,6 +14,7 @@ struct NorouApp: App {
         WindowGroup {
             NotificationListView()
                 .modelContainer(for: [Routine.self])
+
         }
     }
 }
