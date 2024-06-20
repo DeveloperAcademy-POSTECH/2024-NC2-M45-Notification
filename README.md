@@ -9,10 +9,10 @@
 - Notification을 사용하기 위해서는 먼저 알림 권한을 승인 받아야합니다.
 - 원하는 오디오, 이미지, 영상을 Notification에 넣을 수 있습니다.
 - Notification에는 여러가지 trigger가 있습니다.
->UNPushNotificationTrigger를 이용해 Romote Notification을 만들 수 있습니다. <br/>
-UNCalendarNotificationTrigger를 이용하면 특정 날짜와 시간에 Notification을 받을 수 있습니다. <br/>
-UNTimeIntervalNotificationTrigger를 이용하면 특정 시간이 시간이 지나면 Notification을 받을 수 있습니다. <br/>
-UNLocationNotificationTrigger를 이용하면 특정 장소에 도착하거나, 특정 장소를 떠나면 Notification을 받을 수 있습니다.
+   - UNPushNotificationTrigger를 이용해 Romote Notification을 만들 수 있습니다.
+   - UNCalendarNotificationTrigger를 이용하면 특정 날짜와 시간에 Notification을 받을 수 있습니다.
+   - UNTimeIntervalNotificationTrigger를 이용하면 특정 시간이 시간이 지나면 Notification을 받을 수 있습니다.
+   - UNLocationNotificationTrigger를 이용하면 특정 장소에 도착하거나, 특정 장소를 떠나면 Notification을 받을 수 있습니다.
 <br/>
 
 ## 🎯 What we focus on?
