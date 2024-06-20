@@ -26,8 +26,6 @@ UNLocationNotificationTrigger를 이용하면 특정 장소에 도착하거나, 
 
 ## 🖼️ Prototype
 <img width="450" alt="스크린샷 2024-06-21 00 46 01" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M45-Notification/assets/116636498/99cd0349-6cdf-4f35-a98e-e2f103509cc3">
-<br/>
-<br/>
 <img width="468" alt="스크린샷 2024-06-21 00 46 38" src="https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M45-Notification/assets/116636498/caa9ee65-4d4b-4611-bece-700ae85a98e4">
 <br/>
 <br/>
