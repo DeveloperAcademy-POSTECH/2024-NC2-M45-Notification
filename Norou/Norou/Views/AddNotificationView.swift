@@ -204,14 +204,18 @@ struct AddNotificationView: View {
             }
         }
         
-        if isLocationNoti, let latitude = locationManager.location?.coordinate.latitude, let longitude = locationManager.location?.coordinate.longitude {
+        if isLocationNoti {
+            if let latitude = locationManager.location?.coordinate.latitude, let longitude = locationManager.location?.coordinate.longitude {
                 let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 let region = CLCircularRegion(center: center, radius: 100, identifier: UUID().uuidString)
                 region.notifyOnEntry = true
                 region.notifyOnExit = false
                 
                 trigger = UNLocationNotificationTrigger(region: region, repeats: false)
+            } else {
+                print("위치 정보를 가져오지 못함")
             }
+        }
         
         
         if let trigger = trigger {
