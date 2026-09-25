@@ -1,6 +1,6 @@
 # 2024-NC2-M0-AugmentedReality
 ## 🎥 Youtube Link
-(추후 만들어진 유튜브 링크 추가)
+[(유튜브 링크 바로가기)](https://youtu.be/80vlJmtogyk?si=qUd_vcIbNQfgKCCz)
 <br/>
 
 ## 💡 About Augmented Reality
